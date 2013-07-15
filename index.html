@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<script src="https://apis.google.com/_/scs/apps-static/_/js/k=oz.gapi.en.1Oqhs4lXZCY.O/m=client/rt=j/sv=1/d=1/ed=1/am=EQ/rs=AItRSTNUrDzwowyaltAfS4rx4rS6b2U-RQ/cb=gapi.loaded_0" async=""></script>
+<script id="tinyhippos-injected">if (window.top.ripple) { window.top.ripple("bootstrap").inject(window, document); }</script>
+
+
+  <head>
+    <title>Movie Explorer</title>
+    <link href="./font.css" rel="stylesheet" type="text/css">
+    <link href="./bootstrapmin.css" rel="stylesheet" media="screen">
+    <link href="./bootstrap.css" rel="stylesheet" media="screen">
+    <link href="./darkstrap.css" rel="stylesheet" media="screen">
+    <link href="./suggest.css" rel="stylesheet" type="text/css">
+    <link href="./index.css" rel="stylesheet" type="text/css">
+    <link href="../img/icon.png" rel="shortcut icon">
+  </head>
+
+  <body>
+    <div class="navbar navbar-static-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <h1>Movie Explorer</h1>
+
+          <form id="search-details">
+            <fieldset>
+              <span class="inline-text">Find movies</span>
+
+              <script id="search-pair-template" type="text/x-handlebars">
+                <div class="search-pair">
+                  <select class="selectpicker">
+                    <option value="/film/film/directed_by">directed by</option>
+                    <option value="contributor">starring</option>
+                    <option value="/film/film/genre">with genre</option>
+                    <option value="certification">awarded</option>
+                  </select>
+                  <input type="text">
+                  <input type="hidden">
+                </div>
+              </script>
+
+              <a id="and" href="#" class="btn btn-inverse">and...</a>
+            </fieldset>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="output">
+      <div id="message"></div>
+      <div id="movies-list" class="thumbnails">
+        <script id="movie-template" type="text/x-handlebars">
+          {{#each movies}}
+            <div class="movie thumbnail">
+              {{! See https://developers.google.com/youtube/player_parameters for various player parameters. }}
+              <iframe class="player" src="//www.youtube.com/embed/{{this.videoId}}?controls=2"></iframe>
+              <a href="//www.freebase.com{{this.mid}}" target="_blank"><h3>{{this.title}}</h3></a>
+              <p>{{this.description}}</p>
+            </div>
+          {{/each}}
+        </script>
+      </div>
+    </div>
+
+    <script src="./jquery.js" type="text/javascript"></script>
+    <script src="./suggest.js" type="text/javascript"></script>
+    <script src="./handlebars.js" type="text/javascript"></script>
+    <script src="./bootstrap.min.js"></script>
+    <script src="./bootstrap-select.min.js"></script>
+    <script src="./constants.js" type="text/javascript"></script>
+    <script src="./freebase.js" type="text/javascript"></script>
+    <script src="./youtube.js" type="text/javascript"></script>
+    <script src="./index.js" type="text/javascript"></script>
+    <script src="./client.js" type="text/javascript"></script>
+  </body>
+</html>
